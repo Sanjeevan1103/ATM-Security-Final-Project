@@ -79,7 +79,7 @@ def Camera():
     video = cv2.VideoCapture(0)
     video.set(3, 640)
     video.set(4, 480)
-    imgBackground = cv2.imread('Image/Bg_FaceScan.png')
+    imgBackground = cv2.imread('Image/CamFaceScan.png')
     facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
     count = 0
@@ -101,11 +101,11 @@ def Camera():
 
 
         #cv2.imshow("WindowFrame", frame)
-        imgBackground[50:50 + 480, 50:50 + 640] = frame
+        imgBackground[200:200 + 480, 80:80 + 640] = frame
         cv2.imshow("webcam", frame)
         cv2.imshow("Face Attendance", imgBackground)
         cv2.waitKey(50)
-        if count > 5:
+        if count > 50:
             Scan_Complete()
             break
 
@@ -155,7 +155,7 @@ root = tk.Tk()
 root.title("Auto Change Application")
 root.geometry("1600x865")
 root.state("zoomed")
-background_image = tk.PhotoImage(file="Image/Bg_FaceScan.png")  # Replace with your image file path
+background_image = tk.PhotoImage(file="Image/StartupApp.png")  # Replace with your image file path
 
 # Create a label widget to display the background image
 background_label = tk.Label(root, image=background_image)
