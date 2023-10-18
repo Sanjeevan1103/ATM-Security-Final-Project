@@ -1,3 +1,5 @@
+import time
+
 import winsound
 import cv2
 import tkinter as tk
@@ -26,7 +28,7 @@ def Scan_Complete():
     scan_complete.iconphoto(True, icon)
 
     # Load the background image using PhotoImage
-    background_image = tk.PhotoImage(file="Image/Bg_FaceScan.png")  # Replace with your image file path
+    background_image = tk.PhotoImage(file="Image/StartupApp.png")  # Replace with your image file path
 
     # Create a label widget to display the background image
     background_label = tk.Label(scan_complete, image=background_image)
@@ -34,9 +36,9 @@ def Scan_Complete():
     winsound.PlaySound('WARNING.wav', winsound.SND_ASYNC)
     text_to_type = "SCAN CAMPLETE."  # The text you want to animate
 
-    text_label = tk.Label(scan_complete, text="", font=("Digital-7 Mono", 50), bg="#0A0F0B", fg="#7AFF00")
+    text_label = tk.Label(scan_complete, text="", font=("Digital-7 Mono", 60), bg="#00132C", fg="#007CFF")
     text_label.pack(pady=20)
-    text_label.place(x=560, y=400)
+    text_label.place(x=450, y=340)
 
     # Start the typing animation when the application starts
     auto_type(text_label, text_to_type)
@@ -64,7 +66,7 @@ def main_Screen():
     winsound.PlaySound('WARNING.wav', winsound.SND_ASYNC)
     text_to_type = "WARNING..."  # The text you want to animate
 
-    text_label = tk.Label(main_window, text="", font=("Digital-7 Mono", 50), bg="#000", fg="#FF4B12")
+    text_label = tk.Label(main_window, text="", font=("Digital-7 Mono", 50), bg="#00132C", fg="#007CFF")
     text_label.pack(pady=20)
     text_label.place(x=650, y=510)
 
@@ -100,6 +102,7 @@ def Camera():
             cv2.putText(frame, "Clear Face", (x + 15, y - 15), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.75, (255, 255, 255), 1)
 
 
+
         #cv2.imshow("WindowFrame", frame)
         imgBackground[200:200 + 480, 80:80 + 640] = frame
         cv2.imshow("webcam", frame)
@@ -108,7 +111,10 @@ def Camera():
         if count > 50:
             Scan_Complete()
             break
-
+    text_label = tk.Label(root, text="Face Scanning", font=("Digital-7 Mono", 60), bg="#00132C",
+                          fg="#007CFF")
+    text_label.pack(pady=20)
+    text_label.place(x=450, y=340)
     cv2.waitKey(1)
     Camera_Window = tk.Tk()
     Camera_Window.title("Auto Change Application")
@@ -144,7 +150,7 @@ def auto_change_screen():
 
 
     text_to_type = "CAMERA STARTING..."
-    text_label = tk.Label(root, text=labels[current_label_index], font=("Digital-7 Mono", 60),bg="#011F44", fg="#007CFF")
+    text_label = tk.Label(root, text=labels[current_label_index], font=("Digital-7 Mono", 60),bg="#00132C", fg="#007CFF")
     text_label.pack(pady=20)
     text_label.place(x=450, y=340)
     #auto_type(text_label, labels)
